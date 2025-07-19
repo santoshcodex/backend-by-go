@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var i int = 5
 
@@ -12,6 +15,9 @@ func main() {
 	fmt.Println(addandsub(11, 5))
 	increment()
 	decrement()
+	fmt.Println(FormatLog("ERROR", "DB", "down", "again"))
+	fmt.Println(FormatLog("heyy"))
+
 }
 
 // Declaring func
@@ -54,4 +60,13 @@ func decrement() {
 		fmt.Println(i)
 	}
 	fmt.Println("before", i)
+}
+
+// variadic fucntion
+func FormatLog(level string, messages ...string) string {
+	length := len(messages)
+	if length == 0 {
+		return "[" + level + "] "
+	}
+	return "[" + level + "] " + strings.Join(messages, " ")
 }
